@@ -3,6 +3,11 @@
     <declare-styleable name="ClickEffect">
         <attr name="effect_pressed_background" format="color|reference" />
         <attr name="effect_pressed_text_color" format="color" />
+        <attr name="effect_default_selector" format="boolean" />
         <attr name="effect_round_radius" format="dimension" />
+        <attr name="effect_top_left_radius" format="dimension" />
+        <attr name="effect_top_right_radius" format="dimension" />
+        <attr name="effect_bottom_left_radius" format="dimension" />
+        <attr name="effect_bottom_right_radius" format="dimension" />
     </declare-styleable>
 </resources>

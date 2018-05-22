@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
 
-    <cn.ymex.effect.EffectView
+    <cn.ymex.effect.view.EffectViewContainer
         android:id="@+id/buttonEffect_lout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:effect_default_selector="false"
+        app:effect_pressed_background="#c12d2d"
+        app:effect_pressed_text_color="#ffffff"
+        app:effect_top_left_radius="10dp">
 
         <Button
             android:id="@+id/buttonEffect"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffbbcc"
+            android:background="#bbccee"
             android:text="hi-hi"
-            android:textColor="#000000" />
-    </cn.ymex.effect.EffectView>
+            android:textColor="#003300" />
+    </cn.ymex.effect.view.EffectViewContainer>
 
-    <cn.ymex.effect.EffectView
+    <cn.ymex.effect.view.EffectViewContainer
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:src="@mipmap/ic_launcher"/>
-    </cn.ymex.effect.EffectView>
+            android:src="@mipmap/ic_launcher" />
+    </cn.ymex.effect.view.EffectViewContainer>
 </LinearLayout>
