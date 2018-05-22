@@ -8,7 +8,7 @@ import cn.ymex.effect.view.EffectViewContainer;
 
 /**
  * Created by ymex on 2018/5/22.
- * About:
+ * About: selector
  */
 public class SelectorEffect implements Effect {
     @Override
