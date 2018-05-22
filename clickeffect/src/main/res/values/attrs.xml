@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClickEffect">
+        <attr name="effect_pressed_background" format="color|reference" />
+        <attr name="effect_pressed_text_color" format="color" />
+        <attr name="effect_round_radius" format="dimension" />
+    </declare-styleable>
+</resources>
