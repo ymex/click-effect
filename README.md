@@ -1,7 +1,27 @@
 # click effect
 
 
-如何你受够了写 selector ，也许你可以尝试别一种写法。
+引用库
+
+```
+implementation  'cn.ymex:click-effect:1.0.0'
+```
+
+如何你受够了写 selector ，也许你可以尝试别一种写法。使用`EffectViewContainer`包裹一个基础控件，
+如button,textview等。不配置任何effect属性的情况下，默认有个半透明的效果。
+
+```
+<cn.ymex.effect.view.EffectViewContainer
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher" />
+</cn.ymex.effect.view.EffectViewContainer>
+```
+
+配置effect属性可实现更多自定义效果。
 
 ```
 <cn.ymex.effect.view.EffectViewContainer
