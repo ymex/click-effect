@@ -2,11 +2,9 @@ package cn.ymex.effect.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -68,7 +66,7 @@ public class EffectViewContainer extends FrameLayout {
             return;
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClickEffect);
-        surface.defSelector = typedArray.getBoolean(R.styleable.ClickEffect_effect_default_selector, false);
+        surface.defSelector = typedArray.getBoolean(R.styleable.ClickEffect_effect_xml_selector, false);
         surface.roundRadius = typedArray.getDimensionPixelSize(R.styleable.ClickEffect_effect_round_radius, 0);
         surface.topLeftRadius = typedArray.getDimensionPixelSize(R.styleable.ClickEffect_effect_top_left_radius, 0);
         surface.topRightRadius = typedArray.getDimensionPixelSize(R.styleable.ClickEffect_effect_top_right_radius, 0);
@@ -76,6 +74,15 @@ public class EffectViewContainer extends FrameLayout {
         surface.bottomRightRadius = typedArray.getDimensionPixelSize(R.styleable.ClickEffect_effect_bottom_right_radius, 0);
         surface.pressedBg = typedArray.getDrawable(R.styleable.ClickEffect_effect_pressed_background);
         surface.pressedTextColor = typedArray.getColor(R.styleable.ClickEffect_effect_pressed_text_color, 0);
+        surface.strokeColor = typedArray.getColor(R.styleable.ClickEffect_effect_stroke_color, 0);
+        surface.pressedStrokeColor = typedArray.getColor(R.styleable.ClickEffect_effect_pressed_stroke_color, 0);
+        surface.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.ClickEffect_effect_stroke_width, 0);
+
+        if (surface.strokeWidth > 0) {
+            if (surface.strokeColor != 0) {
+                surface.pressedStrokeColor = surface.pressedStrokeColor != 0 ? surface.pressedStrokeColor : surface.strokeColor;
+            }
+        }
         typedArray.recycle();
     }
 
@@ -88,18 +95,19 @@ public class EffectViewContainer extends FrameLayout {
         }
 
         View view = getChildAt(0);
-        view.setEnabled(false);
+        //view.setEnabled(false);
         surface.bg = view.getBackground();
         setRoundRect();
         if (view instanceof TextView) {
             surface.textColor = ((TextView) view).getCurrentTextColor();
         }
         this.effects.clear();
-        if (surface.pressedBg != null || surface.textColor != 0 || surface.defSelector) {
+        if (surface.defSelector) {
             this.effects.add(new SelectorEffect());
-        } else {
+        } else if (surface.pressedBg != null || surface.pressedTextColor != 0 ){
+            this.effects.add(new SelectorEffect());
+        }else {
             this.effects.add(new AlphaEffect());
-
         }
     }
 
@@ -128,7 +136,7 @@ public class EffectViewContainer extends FrameLayout {
         if (surface.bg != null && surface.bg instanceof ColorDrawable) {
             View view = getChildAt(0);
             int bgColor = ((ColorDrawable) surface.bg).getColor();
-            surface.bg = createRoundRectDrawable(bgColor);
+            surface.bg = createRoundRectDrawable(bgColor, surface.strokeWidth, surface.strokeColor);
             if (!surface.defSelector) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     view.setBackground(surface.bg);
@@ -139,7 +147,7 @@ public class EffectViewContainer extends FrameLayout {
 
         }
         if (surface.pressedBg != null && surface.pressedBg instanceof ColorDrawable) {
-            surface.pressedBg = createRoundRectDrawable(((ColorDrawable) surface.pressedBg).getColor());
+            surface.pressedBg = createRoundRectDrawable(((ColorDrawable) surface.pressedBg).getColor(), surface.strokeWidth, surface.pressedStrokeColor);
         }
     }
 
@@ -148,9 +156,8 @@ public class EffectViewContainer extends FrameLayout {
      * int color : background color
      * return Drawable
      */
-    private Drawable createRoundRectDrawable(int color) {
+    private Drawable createRoundRectDrawable(int bgcolor, int strokeWidth, int strokeColor) {
 
-        ShapeDrawable drawable = new ShapeDrawable();
         float[] outerR = new float[]{
                 surface.topLeftRadius, surface.topLeftRadius,
                 surface.topRightRadius, surface.topRightRadius,
@@ -165,11 +172,13 @@ public class EffectViewContainer extends FrameLayout {
                     surface.roundRadius, surface.roundRadius
             };
         }
-        RoundRectShape rectShape = new RoundRectShape(outerR, null, null);
-        drawable.getPaint().setColor(color);
-        drawable.getPaint().setStyle(Paint.Style.FILL);
-        drawable.setShape(rectShape);
-        return drawable;
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.setColor(bgcolor);
+        gradientDrawable.setCornerRadii(outerR);
+        if (strokeWidth > 0 && strokeColor != 0) {
+            gradientDrawable.setStroke(strokeWidth, strokeColor);
+        }
+        return gradientDrawable;
     }
 
 
@@ -199,6 +208,10 @@ public class EffectViewContainer extends FrameLayout {
         public int textColor;//文字颜色
         public Drawable pressedBg;
         public int pressedTextColor;
+        public int strokeWidth;
+        public int strokeColor;
+        public int pressedStrokeColor;
+
 
         public int roundRadius;//圆角半径
         public int topLeftRadius;

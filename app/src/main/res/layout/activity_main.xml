@@ -8,13 +8,35 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <cn.ymex.effect.view.EffectViewContainer
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:effect_xml_selector="true">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="系统默认select或自定义的xml selector" />
+    </cn.ymex.effect.view.EffectViewContainer>
+
+    <cn.ymex.effect.view.EffectViewContainer
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="click effect 默认" />
+    </cn.ymex.effect.view.EffectViewContainer>
 
     <cn.ymex.effect.view.EffectViewContainer
         android:id="@+id/buttonEffect_lout"
         android:layout_width="248dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:effect_default_selector="false"
+        app:effect_bottom_right_radius="10dp"
         app:effect_pressed_background="#c12d2d"
         app:effect_pressed_text_color="#ffffff"
         app:effect_top_left_radius="10dp">
@@ -24,16 +46,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#bbccee"
-            android:text="hi-hi"
+            android:text="Round Rect"
+            android:textColor="#003300" />
+    </cn.ymex.effect.view.EffectViewContainer>
+
+
+    <cn.ymex.effect.view.EffectViewContainer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+    </cn.ymex.effect.view.EffectViewContainer>
+
+    <cn.ymex.effect.view.EffectViewContainer
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:effect_pressed_background="#c12d2d"
+        app:effect_pressed_stroke_color="#111111"
+        app:effect_pressed_text_color="#ffffff"
+        app:effect_round_radius="12dp"
+        app:effect_stroke_color="#141ede"
+        app:effect_stroke_width="1dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="stroke"
             android:textColor="#003300" />
     </cn.ymex.effect.view.EffectViewContainer>
 
     <cn.ymex.effect.view.EffectViewContainer
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:effect_pressed_text_color="#ff0000">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
+            android:text="textview effect" />
     </cn.ymex.effect.view.EffectViewContainer>
 </LinearLayout>
