@@ -40,7 +40,7 @@ publish {
     userOrg = 'ymex'
     groupId = 'cn.ymex'
     artifactId = 'click-effect'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'selector for Android'
     website = 'https://github.com/ymex/click-effect'
 }
