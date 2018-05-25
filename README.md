@@ -5,7 +5,7 @@
 引用库
 
 ```
-implementation  'cn.ymex:click-effect:1.0.0'
+implementation  'cn.ymex:click-effect:1.0.1'
 ```
 
 如何你受够了用xml写 selector ，也许你可以尝试别一种写法。使用`EffectViewContainer`包裹一个基础控件，
