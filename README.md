@@ -5,7 +5,7 @@
 引用库
 
 ```
-implementation  'cn.ymex:click-effect:1.0.1'
+implementation  'cn.ymex:click-effect:1.1.0'
 ```
 
 如何你受够了用xml写 selector ，也许你可以尝试别一种写法。使用`EffectViewContainer`包裹一个基础控件，
@@ -44,13 +44,25 @@ implementation  'cn.ymex:click-effect:1.0.1'
             android:textColor="#003300" />
 </cn.ymex.effect.view.EffectViewContainer>
 ```
+为了减少层级这里重写了四个基础组件（Button,ImageButton,ImageView,TextView）,你可以在布局中直接使用
+不必再包裹一个布局。
+
+```
+<cn.ymex.effect.widget.EffectImageButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:src="@mipmap/ic_game_share2"
+    app:effect_pressed_image="@mipmap/ic_game_share2_pressed" />
+```
 
 可配置的属性：
 
 |属性|说明|
 | --- | --- |
 |effect_pressed_background|按下时背景|
-|effect_pressed_text_color|按下时字体的颜色|
+|effect_pressed_text_color|按下时字体的颜色，仅对于继承自TextView 的组件 生效|
+|effect_pressed_image|按下的图片，仅对于继承ImageView组件生效|
 |effect_xml_selector|使用系统默认或自定义的xml selector|
 |effect_round_radius|圆角|
 |effect_top_left_radius|左上圆角|
