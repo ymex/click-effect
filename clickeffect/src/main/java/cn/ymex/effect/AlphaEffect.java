@@ -2,7 +2,7 @@ package cn.ymex.effect;
 
 import android.view.View;
 
-import cn.ymex.effect.view.EffectViewContainer;
+import cn.ymex.effect.view.ViewSurface;
 
 /**
  * Created by ymexc on 2018/5/22.
@@ -15,7 +15,7 @@ public class AlphaEffect implements Effect {
 
 
     @Override
-    public void onStatePressed(View view, EffectViewContainer.ViewSurface surface, boolean pressed) {
+    public void onStatePressed(View view, ViewSurface surface, boolean pressed) {
         view.setAlpha(pressed ? alpha : 1.0f);
     }
 

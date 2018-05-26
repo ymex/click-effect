@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import cn.ymex.effect.view.EffectViewContainer;
+import cn.ymex.effect.view.ViewSurface;
 
 /**
  * Created by ymex on 2018/5/22.
@@ -13,7 +13,7 @@ import cn.ymex.effect.view.EffectViewContainer;
  */
 public class SelectorEffect implements Effect {
     @Override
-    public void onStatePressed(View view, EffectViewContainer.ViewSurface surface, boolean pressed) {
+    public void onStatePressed(View view, ViewSurface surface, boolean pressed) {
         if (surface.defSelector) {
             view.setPressed(pressed);
             return;
@@ -29,7 +29,7 @@ public class SelectorEffect implements Effect {
             ((TextView) view).setTextColor(pressed ? surface.pressedTextColor : surface.textColor);
         }
 
-        if (surface.pressedImage != null && view instanceof ImageView) {
+        if (surface.pressedImage != null && view instanceof ImageView && surface.image != null) {
             ((ImageView) view).setImageDrawable(pressed ? surface.pressedImage : surface.image);
         }
     }

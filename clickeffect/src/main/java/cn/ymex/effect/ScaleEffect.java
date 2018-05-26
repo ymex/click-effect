@@ -2,7 +2,7 @@ package cn.ymex.effect;
 
 import android.view.View;
 
-import cn.ymex.effect.view.EffectViewContainer;
+import cn.ymex.effect.view.ViewSurface;
 
 /**
  * Created by ymexc on 2018/5/22.
@@ -15,7 +15,7 @@ public class ScaleEffect implements Effect {
     private float scaleY = DEFAULT_EFFECT_SCALE;
 
     @Override
-    public void onStatePressed(View view, EffectViewContainer.ViewSurface surface, boolean pressed) {
+    public void onStatePressed(View view, ViewSurface surface, boolean pressed) {
         view.setScaleX(pressed ? scaleX : 1.0f);
         view.setScaleY(pressed ? scaleY : 1.0f);
     }

@@ -92,4 +92,11 @@
             android:layout_height="wrap_content"
             android:text="textview effect" />
     </cn.ymex.effect.view.EffectViewContainer>
+
+    <cn.ymex.effect.widget.EffectImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@mipmap/ic_game_share2"
+        app:effect_pressed_image="@mipmap/ic_game_share2_pressed" />
 </LinearLayout>
