@@ -2,6 +2,7 @@ package cn.ymex.effect;
 
 import android.os.Build;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.ymex.effect.view.EffectViewContainer;
@@ -26,6 +27,10 @@ public class SelectorEffect implements Effect {
         }
         if (surface.pressedTextColor != 0 && view instanceof TextView) {
             ((TextView) view).setTextColor(pressed ? surface.pressedTextColor : surface.textColor);
+        }
+
+        if (surface.pressedImage != null && view instanceof ImageView) {
+            ((ImageView) view).setImageDrawable(pressed ? surface.pressedImage : surface.image);
         }
     }
 }

@@ -12,6 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class EffectViewContainer extends FrameLayout {
         surface.strokeColor = typedArray.getColor(R.styleable.ClickEffect_effect_stroke_color, 0);
         surface.pressedStrokeColor = typedArray.getColor(R.styleable.ClickEffect_effect_pressed_stroke_color, 0);
         surface.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.ClickEffect_effect_stroke_width, 0);
-
+        surface.pressedImage = typedArray.getDrawable(R.styleable.ClickEffect_effect_pressed_image);
         if (surface.strokeWidth > 0) {
             if (surface.strokeColor != 0) {
                 surface.pressedStrokeColor = surface.pressedStrokeColor != 0 ? surface.pressedStrokeColor : surface.strokeColor;
@@ -101,14 +102,18 @@ public class EffectViewContainer extends FrameLayout {
         if (view instanceof TextView) {
             surface.textColor = ((TextView) view).getCurrentTextColor();
         }
+        if (view instanceof ImageView) {
+            surface.image = ((ImageView) view).getDrawable();
+        }
         this.effects.clear();
         if (surface.defSelector) {
             this.effects.add(new SelectorEffect());
-        } else if (surface.pressedBg != null || surface.pressedTextColor != 0 ){
+        } else if (surface.pressedBg != null || surface.pressedTextColor != 0 || surface.pressedImage != null) {
             this.effects.add(new SelectorEffect());
-        }else {
+        } else {
             this.effects.add(new AlphaEffect());
         }
+
     }
 
     @Override
@@ -212,6 +217,8 @@ public class EffectViewContainer extends FrameLayout {
         public int strokeColor;
         public int pressedStrokeColor;
 
+        public Drawable image;
+        public Drawable pressedImage;
 
         public int roundRadius;//圆角半径
         public int topLeftRadius;

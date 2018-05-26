@@ -12,5 +12,6 @@
         <attr name="effect_stroke_width" format="dimension" />
         <attr name="effect_stroke_color" format="color" />
         <attr name="effect_pressed_stroke_color" format="color" />
+        <attr name="effect_pressed_image" format="reference" />
     </declare-styleable>
 </resources>
