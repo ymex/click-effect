@@ -45,7 +45,7 @@ implementation  'cn.ymex:click-effect:1.1.0'
 </cn.ymex.effect.view.EffectViewContainer>
 ```
 为了减少层级这里重写了四个基础组件（Button,ImageButton,ImageView,TextView）,你可以在布局中直接使用
-不必再包裹一个布局。
+不必再包裹一个布局。当然你可以你方便的重写你自己的组件 （参考 EffectButton）。
 
 ```
 <cn.ymex.effect.widget.EffectImageButton
