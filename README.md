@@ -1,6 +1,7 @@
 # click effect
 
 点击效果库
+![gif](https://github.com/ymex/click-effect/blob/master/app/art/GIF.gif?raw=true)
 
 引用库
 
