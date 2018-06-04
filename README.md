@@ -1,3 +1,4 @@
+[ ![Download](https://api.bintray.com/packages/ymex/maven/click-effect/images/download.svg) ](https://bintray.com/ymex/maven/click-effect/_latestVersion)
 # click effect
 
 点击效果库
