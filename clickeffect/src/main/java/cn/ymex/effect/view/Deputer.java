@@ -33,6 +33,11 @@ public class Deputer {
     private List<Effect> effects;
     private ViewSurface surface;
     //private View proxyView;
+    public static final int EFFECT_MODEL_PRESS = 1;
+    public static final int EFFECT_MODEL_FOCUS = 2;
+    public static final int EFFECT_MODEL_BOTH = 3;
+
+    private int effectModel = EFFECT_MODEL_BOTH;
 
     private Deputer() {
         super();
@@ -67,6 +72,7 @@ public class Deputer {
                 surface.pressedStrokeColor = surface.pressedStrokeColor != 0 ? surface.pressedStrokeColor : surface.strokeColor;
             }
         }
+        setEffectModel(typedArray.getInt(R.styleable.EffectViewContainer_effect_model, EFFECT_MODEL_BOTH));
         typedArray.recycle();
     }
 
@@ -98,6 +104,7 @@ public class Deputer {
         if (view instanceof ImageView) {
             surface.image = ((ImageView) view).getDrawable();
         }
+
         this.effects.clear();
         if (surface.defSelector) {
             this.effects.add(new SelectorEffect());
@@ -176,28 +183,48 @@ public class Deputer {
     }
 
     public void dispatchSetPressed(View view, boolean pressed) {
+        if (effectModel == EFFECT_MODEL_BOTH) {
+            effect(view, pressed, -1, null);
+        } else if (effectModel == EFFECT_MODEL_PRESS) {
+            effect(view, pressed, -1, null);
+        } else {
+            //do nothing
+        }
+    }
+
+    private void effect(View view, boolean flag, int direction, @Nullable Rect previouslyFocusedRect) {
         if (view instanceof ViewGroup) {
             int childCount = ((ViewGroup) view).getChildCount();
             for (int i = 0; i < childCount; i++) {
                 View childView = ((ViewGroup) view).getChildAt(i);
                 for (Effect effect : effects) {
                     if (effect != null) {
-                        effect.onStatePressed(childView, surface, pressed);
+                        effect.onStatePressed(childView, surface, flag);
                     }
                 }
             }
         } else {
             for (Effect effect : effects) {
                 if (effect != null) {
-                    effect.onStatePressed(view, surface, pressed);
+                    effect.onStatePressed(view, surface, flag);
                 }
             }
         }
-
     }
+
 
     public void onFocusChanged(View view, boolean gainFocus, int direction, @Nullable Rect previouslyFocusedRect) {
-        dispatchSetPressed(view, gainFocus);
+        if (effectModel == EFFECT_MODEL_BOTH) {
+            effect(view, gainFocus, direction, previouslyFocusedRect);
+        } else if (effectModel == EFFECT_MODEL_FOCUS) {
+            effect(view, gainFocus, direction, previouslyFocusedRect);
+        } else {
+            //do nothing
+        }
+        effect(view, gainFocus, direction, previouslyFocusedRect);
     }
 
+    public void setEffectModel(int effectModel) {
+        this.effectModel = effectModel;
+    }
 }

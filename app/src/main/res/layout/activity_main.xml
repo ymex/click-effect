@@ -35,6 +35,7 @@
         android:id="@+id/buttonEffect_lout"
         android:layout_width="248dp"
         android:layout_height="wrap_content"
+        app:effect_model="both"
         android:layout_marginTop="10dp"
         app:effect_bottom_right_radius="10dp"
         app:effect_selected_background="#c12d2d"
