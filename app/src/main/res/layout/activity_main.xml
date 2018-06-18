@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:effect_bottom_right_radius="10dp"
-        app:effect_pressed_background="#c12d2d"
-        app:effect_pressed_text_color="#ffffff"
+        app:effect_selected_background="#c12d2d"
+        app:effect_selected_text_color="#ffffff"
         app:effect_top_left_radius="10dp">
 
         <Button
@@ -66,10 +66,10 @@
         android:layout_width="248dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:effect_pressed_background="#c12d2d"
-        app:effect_pressed_stroke_color="#111111"
-        app:effect_pressed_text_color="#ffffff"
         app:effect_round_radius="12dp"
+        app:effect_selected_background="#c12d2d"
+        app:effect_selected_stroke_color="#111111"
+        app:effect_selected_text_color="#ffffff"
         app:effect_stroke_color="#141ede"
         app:effect_stroke_width="1dp">
 
@@ -85,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        app:effect_pressed_text_color="#ff0000">
+        app:effect_selected_text_color="#ff0000">
 
         <TextView
             android:layout_width="wrap_content"
@@ -98,17 +98,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:src="@mipmap/ic_game_share2"
-        app:effect_pressed_image="@mipmap/ic_game_share2_pressed" />
+        app:effect_selected_image="@mipmap/ic_game_share2_pressed" />
 
     <cn.ymex.effect.widget.EffectButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#ffeecc"
         android:text="button"
-        app:effect_pressed_background="#c12d2d"
-        app:effect_pressed_stroke_color="#111111"
-        app:effect_pressed_text_color="#ffffff"
         app:effect_round_radius="2dp"
+        app:effect_selected_background="#c12d2d"
+        app:effect_selected_stroke_color="#111111"
+        app:effect_selected_text_color="#ffffff"
         app:effect_stroke_color="#141ede"
         app:effect_stroke_width="1dp" />
 </LinearLayout>

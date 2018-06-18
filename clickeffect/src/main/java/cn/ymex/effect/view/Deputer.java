@@ -49,19 +49,19 @@ public class Deputer {
         if (attrs == null) {
             return;
         }
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EffectView);
-        surface.defSelector = typedArray.getBoolean(R.styleable.EffectView_effect_xml_selector, false);
-        surface.roundRadius = typedArray.getDimensionPixelSize(R.styleable.EffectView_effect_round_radius, 0);
-        surface.topLeftRadius = typedArray.getDimensionPixelSize(R.styleable.EffectView_effect_top_left_radius, 0);
-        surface.topRightRadius = typedArray.getDimensionPixelSize(R.styleable.EffectView_effect_top_right_radius, 0);
-        surface.bottomLeftRadius = typedArray.getDimensionPixelSize(R.styleable.EffectView_effect_bottom_left_radius, 0);
-        surface.bottomRightRadius = typedArray.getDimensionPixelSize(R.styleable.EffectView_effect_bottom_right_radius, 0);
-        surface.pressedBg = typedArray.getDrawable(R.styleable.EffectView_effect_pressed_background);
-        surface.pressedTextColor = typedArray.getColor(R.styleable.EffectView_effect_pressed_text_color, 0);
-        surface.strokeColor = typedArray.getColor(R.styleable.EffectView_effect_stroke_color, 0);
-        surface.pressedStrokeColor = typedArray.getColor(R.styleable.EffectView_effect_pressed_stroke_color, 0);
-        surface.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.EffectView_effect_stroke_width, 0);
-        surface.pressedImage = typedArray.getDrawable(R.styleable.EffectView_effect_pressed_image);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EffectViewContainer);
+        surface.defSelector = typedArray.getBoolean(R.styleable.EffectViewContainer_effect_xml_selector, false);
+        surface.roundRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_round_radius, 0);
+        surface.topLeftRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_top_left_radius, 0);
+        surface.topRightRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_top_right_radius, 0);
+        surface.bottomLeftRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_bottom_left_radius, 0);
+        surface.bottomRightRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_bottom_right_radius, 0);
+        surface.pressedBg = typedArray.getDrawable(R.styleable.EffectViewContainer_effect_selected_background);
+        surface.pressedTextColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_selected_text_color, 0);
+        surface.strokeColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_stroke_color, 0);
+        surface.pressedStrokeColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_selected_stroke_color, 0);
+        surface.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_stroke_width, 0);
+        surface.pressedImage = typedArray.getDrawable(R.styleable.EffectViewContainer_effect_selected_image);
         if (surface.strokeWidth > 0) {
             if (surface.strokeColor != 0) {
                 surface.pressedStrokeColor = surface.pressedStrokeColor != 0 ? surface.pressedStrokeColor : surface.strokeColor;

@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import cn.ymex.effect.ScaleEffect;
+import cn.ymex.effect.SelectorEffect;
+import cn.ymex.effect.view.EffectViewContainer;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -24,5 +28,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("------", "click R.id.buttonEffect");
             }
         });
+
+        EffectViewContainer container = findViewById(R.id.buttonEffect_lout);
+        container.getDeputer().setEffect(new ScaleEffect(),new SelectorEffect());
     }
 }

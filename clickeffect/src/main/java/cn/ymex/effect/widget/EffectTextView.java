@@ -46,4 +46,8 @@ public class EffectTextView extends AppCompatTextView {
         super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
         deputer.onFocusChanged(this, gainFocus, direction, previouslyFocusedRect);
     }
+
+    public Deputer getDeputer() {
+        return deputer;
+    }
 }

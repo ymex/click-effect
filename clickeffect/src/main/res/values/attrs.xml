@@ -1,17 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="EffectView">
-        <attr name="effect_pressed_background" format="color|reference" />
-        <attr name="effect_pressed_text_color" format="color" />
-        <attr name="effect_xml_selector" format="boolean" />
-        <attr name="effect_round_radius" format="dimension" />
-        <attr name="effect_top_left_radius" format="dimension" />
-        <attr name="effect_top_right_radius" format="dimension" />
-        <attr name="effect_bottom_left_radius" format="dimension" />
-        <attr name="effect_bottom_right_radius" format="dimension" />
-        <attr name="effect_stroke_width" format="dimension" />
-        <attr name="effect_stroke_color" format="color" />
-        <attr name="effect_pressed_stroke_color" format="color" />
-        <attr name="effect_pressed_image" format="reference" />
+    <attr name="effect_selected_background" format="color|reference" />
+    <attr name="effect_selected_text_color" format="color" />
+    <attr name="effect_xml_selector" format="boolean" />
+    <attr name="effect_round_radius" format="dimension" />
+    <attr name="effect_top_left_radius" format="dimension" />
+    <attr name="effect_top_right_radius" format="dimension" />
+    <attr name="effect_bottom_left_radius" format="dimension" />
+    <attr name="effect_bottom_right_radius" format="dimension" />
+    <attr name="effect_stroke_width" format="dimension" />
+    <attr name="effect_stroke_color" format="color" />
+    <attr name="effect_selected_stroke_color" format="color" />
+    <attr name="effect_selected_image" format="reference" />
+
+    <declare-styleable name="EffectViewContainer">
+        <attr name="effect_selected_background" />
+        <attr name="effect_selected_text_color" />
+        <attr name="effect_xml_selector" />
+        <attr name="effect_round_radius" />
+        <attr name="effect_top_left_radius" />
+        <attr name="effect_top_right_radius" />
+        <attr name="effect_bottom_left_radius" />
+        <attr name="effect_bottom_right_radius" />
+        <attr name="effect_stroke_width" />
+        <attr name="effect_stroke_color" />
+        <attr name="effect_selected_stroke_color" />
+        <attr name="effect_selected_image" />
+    </declare-styleable>
+
+    <declare-styleable name="EffectButton">
+        <attr name="effect_selected_background" />
+        <attr name="effect_selected_text_color" />
+        <attr name="effect_xml_selector" />
+        <attr name="effect_round_radius" />
+        <attr name="effect_top_left_radius" />
+        <attr name="effect_top_right_radius" />
+        <attr name="effect_bottom_left_radius" />
+        <attr name="effect_bottom_right_radius" />
+        <attr name="effect_stroke_width" />
+        <attr name="effect_stroke_color" />
+        <attr name="effect_selected_stroke_color" />
+        <attr name="effect_selected_image" />
+    </declare-styleable>
+    <declare-styleable name="EffectImageButton">
+        <attr name="effect_selected_background" />
+        <attr name="effect_selected_text_color" />
+        <attr name="effect_xml_selector" />
+        <attr name="effect_round_radius" />
+        <attr name="effect_top_left_radius" />
+        <attr name="effect_top_right_radius" />
+        <attr name="effect_bottom_left_radius" />
+        <attr name="effect_bottom_right_radius" />
+        <attr name="effect_stroke_width" />
+        <attr name="effect_stroke_color" />
+        <attr name="effect_selected_stroke_color" />
+        <attr name="effect_selected_image" />
+    </declare-styleable>
+    <declare-styleable name="EffectImageView">
+        <attr name="effect_selected_background" />
+        <attr name="effect_selected_text_color" />
+        <attr name="effect_xml_selector" />
+        <attr name="effect_round_radius" />
+        <attr name="effect_top_left_radius" />
+        <attr name="effect_top_right_radius" />
+        <attr name="effect_bottom_left_radius" />
+        <attr name="effect_bottom_right_radius" />
+        <attr name="effect_stroke_width" />
+        <attr name="effect_stroke_color" />
+        <attr name="effect_selected_stroke_color" />
+        <attr name="effect_selected_image" />
+    </declare-styleable>
+    <declare-styleable name="EffectTextView">
+        <attr name="effect_selected_background" />
+        <attr name="effect_selected_text_color" />
+        <attr name="effect_xml_selector" />
+        <attr name="effect_round_radius" />
+        <attr name="effect_top_left_radius" />
+        <attr name="effect_top_right_radius" />
+        <attr name="effect_bottom_left_radius" />
+        <attr name="effect_bottom_right_radius" />
+        <attr name="effect_stroke_width" />
+        <attr name="effect_stroke_color" />
+        <attr name="effect_selected_stroke_color" />
+        <attr name="effect_selected_image" />
     </declare-styleable>
 </resources>

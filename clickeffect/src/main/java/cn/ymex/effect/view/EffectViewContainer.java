@@ -79,4 +79,8 @@ public class EffectViewContainer extends FrameLayout {
         super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
         deputer.onFocusChanged(this, gainFocus, direction, previouslyFocusedRect);
     }
+
+    public Deputer getDeputer() {
+        return deputer;
+    }
 }
