@@ -1,6 +1,8 @@
 package cn.ymex.effect.widget;
 
 import android.content.Context;
+import android.graphics.Rect;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
@@ -36,5 +38,11 @@ public class EffectImageView extends AppCompatImageView{
     protected void dispatchSetPressed(boolean pressed) {
         super.dispatchSetPressed(pressed);
         deputer.dispatchSetPressed(this,pressed);
+    }
+
+    @Override
+    protected void onFocusChanged(boolean gainFocus, int direction, @Nullable Rect previouslyFocusedRect) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        deputer.onFocusChanged(this, gainFocus, direction, previouslyFocusedRect);
     }
 }

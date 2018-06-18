@@ -1,6 +1,7 @@
 package cn.ymex.effect.view;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -45,6 +46,7 @@ public class EffectViewContainer extends FrameLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         //getChildAt(0).setEnabled(false);
+        this.setFocusable(true);
         deputer.onViewFinishInflate(this);
     }
 
@@ -70,5 +72,11 @@ public class EffectViewContainer extends FrameLayout {
     protected void dispatchSetPressed(boolean pressed) {
         super.dispatchSetPressed(pressed);
         deputer.dispatchSetPressed(this, pressed);
+    }
+
+    @Override
+    protected void onFocusChanged(boolean gainFocus, int direction, @Nullable Rect previouslyFocusedRect) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        deputer.onFocusChanged(this, gainFocus, direction, previouslyFocusedRect);
     }
 }

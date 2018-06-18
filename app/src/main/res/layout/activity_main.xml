@@ -103,8 +103,8 @@
     <cn.ymex.effect.widget.EffectButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="button"
         android:background="#ffeecc"
+        android:text="button"
         app:effect_pressed_background="#c12d2d"
         app:effect_pressed_stroke_color="#111111"
         app:effect_pressed_text_color="#ffffff"

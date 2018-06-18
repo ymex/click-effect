@@ -2,13 +2,17 @@ package cn.ymex.effect.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,12 +74,17 @@ public class Deputer {
         proView.setClickable(true);
         View view = null;
         if (proView instanceof ViewGroup) {
+
             int childCount = ((ViewGroup) proView).getChildCount();
             if (childCount > 1) {
                 throw new RuntimeException("just allow single view!");
             }
             view = ((ViewGroup) proView).getChildAt(0);
+            if (view instanceof Button || view instanceof ImageButton) {
+                view.setFocusable(false);
+            }
         } else {
+            proView.setFocusable(true);
             view = proView;
         }
         if (view == null) {
@@ -185,6 +194,10 @@ public class Deputer {
             }
         }
 
+    }
+
+    public void onFocusChanged(View view, boolean gainFocus, int direction, @Nullable Rect previouslyFocusedRect) {
+        dispatchSetPressed(view, gainFocus);
     }
 
 }
