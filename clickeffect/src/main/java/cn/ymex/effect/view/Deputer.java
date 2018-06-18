@@ -116,9 +116,9 @@ public class Deputer {
     }
 
     private void setRoundRect(View view) {
-        if (!surface.isRequestRoundRect()) {
-            return;
-        }
+//        if (!surface.isRequestRoundRect()) {
+//            return;
+//        }
 
         if (surface.bg != null && surface.bg instanceof ColorDrawable) {
             int bgColor = ((ColorDrawable) surface.bg).getColor();
