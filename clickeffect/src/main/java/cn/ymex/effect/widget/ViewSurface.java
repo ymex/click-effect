@@ -15,7 +15,7 @@ public class ViewSurface {
      */
     public Drawable bg;
     public int textColor;
-    public Drawable pressedBg;
+    public Drawable selectedBg;
     public int selectedTextColor;
     public int strokeWidth;
     public int strokeColor;

@@ -20,11 +20,11 @@ public class SelectorEffect implements Effect {
             view.setPressed(pressed);
             return;
         }
-        if (surface.pressedBg != null) {
+        if (surface.selectedBg != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                view.setBackground(pressed ? surface.pressedBg : surface.bg);
+                view.setBackground(pressed ? surface.selectedBg : surface.bg);
             } else {
-                view.setBackgroundDrawable(pressed ? surface.pressedBg : surface.bg);
+                view.setBackgroundDrawable(pressed ? surface.selectedBg : surface.bg);
             }
         }
         if (surface.selectedTextColor != 0 && view instanceof TextView) {

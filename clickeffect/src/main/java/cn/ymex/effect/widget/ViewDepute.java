@@ -58,7 +58,7 @@ public class ViewDepute {
         surface.topRightRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_top_right_radius, 0);
         surface.bottomLeftRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_bottom_left_radius, 0);
         surface.bottomRightRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_bottom_right_radius, 0);
-        surface.pressedBg = typedArray.getDrawable(R.styleable.EffectViewContainer_effect_selected_background);
+        surface.selectedBg = typedArray.getDrawable(R.styleable.EffectViewContainer_effect_selected_background);
         surface.selectedTextColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_selected_text_color, 0);
         surface.strokeColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_stroke_color, 0);
         surface.selectedStrokeColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_selected_stroke_color, 0);
@@ -123,7 +123,7 @@ public class ViewDepute {
 
         if (surface.defSelector) {
             this.effect = new SelectorEffect();
-        } else if (surface.pressedBg != null || surface.selectedTextColor != 0 || surface.selectedImage != null) {
+        } else if (surface.selectedBg != null || surface.selectedTextColor != 0 || surface.selectedImage != null) {
             this.effect = new SelectorEffect();
         } else {
             this.effect = new AlphaEffect();
@@ -144,8 +144,8 @@ public class ViewDepute {
             }
 
         }
-        if (surface.pressedBg != null && surface.pressedBg instanceof ColorDrawable) {
-            surface.pressedBg = createRoundRectDrawable(((ColorDrawable) surface.pressedBg).getColor(), surface.strokeWidth, surface.selectedStrokeColor);
+        if (surface.selectedBg != null && surface.selectedBg instanceof ColorDrawable) {
+            surface.selectedBg = createRoundRectDrawable(((ColorDrawable) surface.selectedBg).getColor(), surface.strokeWidth, surface.selectedStrokeColor);
         }
     }
 
