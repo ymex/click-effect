@@ -8,7 +8,7 @@
 引用库
 
 ```
-implementation  'cn.ymex:click-effect:1.2.0'
+implementation  'cn.ymex:click-effect:1.2.4'
 ```
 
 如何你受够了用xml写 selector ，也许你可以尝试别一种写法。使用`EffectViewContainer`包裹一个基础控件，
@@ -63,6 +63,8 @@ implementation  'cn.ymex:click-effect:1.2.0'
 
 |属性|说明|
 | --- | --- |
+|effect|效果类（v1.2.4+）|
+|effect_model|按下或获得焦点才展示效果(v1.2.4+)|
 |effect_selected_background|按下时背景|
 |effect_selected_text_color|按下时字体的颜色，仅对于继承自TextView 的组件 生效|
 |effect_selected_image|按下的图片，仅对于继承ImageView组件生效|

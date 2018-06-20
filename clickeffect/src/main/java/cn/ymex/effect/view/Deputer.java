@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import cn.ymex.clickeffect.R;
 import cn.ymex.effect.AlphaEffect;
@@ -30,9 +27,8 @@ import cn.ymex.effect.SelectorEffect;
  * About:代理
  */
 public class Deputer {
-    private List<Effect> effects;
+    private Effect effect;
     private ViewSurface surface;
-    //private View proxyView;
     public static final int EFFECT_MODEL_PRESS = 1;
     public static final int EFFECT_MODEL_FOCUS = 2;
     public static final int EFFECT_MODEL_BOTH = 3;
@@ -41,8 +37,6 @@ public class Deputer {
 
     private Deputer() {
         super();
-        //this.proxyView = view;
-        this.effects = new ArrayList<>();
         this.surface = new ViewSurface();
     }
 
@@ -73,12 +67,28 @@ public class Deputer {
             }
         }
         setEffectModel(typedArray.getInt(R.styleable.EffectViewContainer_effect_model, EFFECT_MODEL_BOTH));
+        String effectC = typedArray.getString(R.styleable.EffectViewContainer_effect);
+        if (!TextUtils.isEmpty(effectC)) {
+            try {
+                Class c = Class.forName(effectC);
+                Object o = c.newInstance();
+                if (o instanceof Effect) {
+                    this.effect = (Effect) o;
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
         typedArray.recycle();
     }
 
     public void onViewFinishInflate(View proView) {
         proView.setClickable(true);
-        View view = null;
+        View view;
         if (proView instanceof ViewGroup) {
 
             int childCount = ((ViewGroup) proView).getChildCount();
@@ -104,21 +114,20 @@ public class Deputer {
         if (view instanceof ImageView) {
             surface.image = ((ImageView) view).getDrawable();
         }
+        if (effect != null) {
+            return;
+        }
 
-        this.effects.clear();
         if (surface.defSelector) {
-            this.effects.add(new SelectorEffect());
+            this.effect = new SelectorEffect();
         } else if (surface.pressedBg != null || surface.pressedTextColor != 0 || surface.pressedImage != null) {
-            this.effects.add(new SelectorEffect());
+            this.effect = new SelectorEffect();
         } else {
-            this.effects.add(new AlphaEffect());
+            this.effect = new AlphaEffect();
         }
     }
 
     private void setRoundRect(View view) {
-//        if (!surface.isRequestRoundRect()) {
-//            return;
-//        }
 
         if (surface.bg != null && surface.bg instanceof ColorDrawable) {
             int bgColor = ((ColorDrawable) surface.bg).getColor();
@@ -171,15 +180,12 @@ public class Deputer {
         return surface;
     }
 
-    public List<Effect> getEffects() {
-        return effects;
+    public Effect getEffect() {
+        return effect;
     }
 
-    public void setEffect(Effect... effects) {
-        if (effects.length > 0) {
-            this.effects.clear();
-            this.effects.addAll(Arrays.asList(effects));
-        }
+    public void setEffect(Effect effect) {
+        this.effect = effect;
     }
 
     public void dispatchSetPressed(View view, boolean pressed) {
@@ -197,18 +203,10 @@ public class Deputer {
             int childCount = ((ViewGroup) view).getChildCount();
             for (int i = 0; i < childCount; i++) {
                 View childView = ((ViewGroup) view).getChildAt(i);
-                for (Effect effect : effects) {
-                    if (effect != null) {
-                        effect.onStatePressed(childView, surface, flag);
-                    }
-                }
+                this.effect.onStateChange(childView, surface, flag);
             }
         } else {
-            for (Effect effect : effects) {
-                if (effect != null) {
-                    effect.onStatePressed(view, surface, flag);
-                }
-            }
+            effect.onStateChange(view, surface, flag);
         }
     }
 

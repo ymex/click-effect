@@ -15,7 +15,7 @@ public class AlphaEffect implements Effect {
 
 
     @Override
-    public void onStatePressed(View view, ViewSurface surface, boolean pressed) {
+    public void onStateChange(View view, ViewSurface surface, boolean pressed) {
         view.setAlpha(pressed ? alpha : 1.0f);
     }
 

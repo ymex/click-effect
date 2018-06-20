@@ -8,12 +8,14 @@ import android.widget.TextView;
 import cn.ymex.effect.view.ViewSurface;
 
 /**
- * Created by ymex on 2018/5/22.
+ *
+ * @author ymex
+ * @date 2018/5/22
  * About: selector
  */
 public class SelectorEffect implements Effect {
     @Override
-    public void onStatePressed(View view, ViewSurface surface, boolean pressed) {
+    public void onStateChange(View view, ViewSurface surface, boolean pressed) {
         if (surface.defSelector) {
             view.setPressed(pressed);
             return;

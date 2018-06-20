@@ -38,6 +38,7 @@
         app:effect_model="both"
         android:layout_marginTop="10dp"
         app:effect_bottom_right_radius="10dp"
+        app:effect="cn.ymex.clickeffect.demo.SCEff"
         app:effect_selected_background="#c12d2d"
         app:effect_selected_text_color="#ffffff"
         app:effect_top_left_radius="10dp">

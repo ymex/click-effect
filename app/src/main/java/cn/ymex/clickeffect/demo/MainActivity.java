@@ -1,14 +1,13 @@
 package cn.ymex.clickeffect.demo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import cn.ymex.effect.ScaleEffect;
-import cn.ymex.effect.SelectorEffect;
-import cn.ymex.effect.view.EffectViewContainer;
-
+/**
+ * @author ymexc
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -29,7 +28,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        EffectViewContainer container = findViewById(R.id.buttonEffect_lout);
-        container.getDeputer().setEffect(new ScaleEffect(),new SelectorEffect());
     }
 }

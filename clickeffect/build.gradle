@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode 16
-        versionName "1.2.3"
+        versionCode 17
+        versionName "1.2.4"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -40,7 +40,7 @@ publish {
     userOrg = 'ymex'
     groupId = 'cn.ymex'
     artifactId = 'click-effect'
-    publishVersion = '1.2.3'
+    publishVersion = '1.2.4'
     desc = 'selector for Android'
     website = 'https://github.com/ymex/click-effect'
 }
