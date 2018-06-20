@@ -24,8 +24,7 @@ import cn.ymex.effect.SelectorEffect;
 
 /**
  *
- * @author ymexc
- * @date 2018/5/26
+ * @author ymexc 2018/5/26
  * About:代理
  */
 public class ViewDepute {

@@ -11,8 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 /**
- * @author ymexc
- * @date 2018/5/22
+ * @author ymexc 2018/5/22
  * About:EffectView
  */
 public class EffectViewContainer extends FrameLayout implements EffectView {

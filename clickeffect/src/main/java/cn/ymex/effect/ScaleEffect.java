@@ -5,8 +5,7 @@ import android.view.View;
 import cn.ymex.effect.widget.ViewSurface;
 
 /**
- * @author ymexc
- * @date 2018/5/22
+ * @author ymexc 2018/5/22
  * About:缩放效果
  */
 public class ScaleEffect implements Effect {

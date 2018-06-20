@@ -4,8 +4,7 @@ import android.graphics.drawable.Drawable;
 
 /**
  *
- * @author ymexc
- * @date 2018/5/26
+ * @author ymexc 2018/5/26
  * About:surface
  */
 public class ViewSurface {

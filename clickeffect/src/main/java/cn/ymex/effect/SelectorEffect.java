@@ -9,8 +9,7 @@ import cn.ymex.effect.widget.ViewSurface;
 
 /**
  *
- * @author ymex
- * @date 2018/5/22
+ * @author ymex 2018/5/22
  * About: selector
  */
 public class SelectorEffect implements Effect {
