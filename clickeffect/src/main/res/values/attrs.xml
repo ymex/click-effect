@@ -17,6 +17,7 @@
         <enum name="press" value="1" />
         <enum name="focus" value="2" />
         <enum name="both" value="3" />
+        <enum name="manual" value="4" />
     </attr>
     <attr name="effects" format="string" />
     <declare-styleable name="EffectViewContainer">

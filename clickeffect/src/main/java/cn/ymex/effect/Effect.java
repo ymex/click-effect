@@ -2,7 +2,7 @@ package cn.ymex.effect;
 
 import android.view.View;
 
-import cn.ymex.effect.view.ViewSurface;
+import cn.ymex.effect.widget.ViewSurface;
 
 /**
  * Created by ymexc on 2018/5/22.

@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import cn.ymex.effect.view.ViewSurface;
+import cn.ymex.effect.widget.ViewSurface;
 
 /**
  *
@@ -27,12 +27,12 @@ public class SelectorEffect implements Effect {
                 view.setBackgroundDrawable(pressed ? surface.pressedBg : surface.bg);
             }
         }
-        if (surface.pressedTextColor != 0 && view instanceof TextView) {
-            ((TextView) view).setTextColor(pressed ? surface.pressedTextColor : surface.textColor);
+        if (surface.selectedTextColor != 0 && view instanceof TextView) {
+            ((TextView) view).setTextColor(pressed ? surface.selectedTextColor : surface.textColor);
         }
 
-        if (surface.pressedImage != null && view instanceof ImageView && surface.image != null) {
-            ((ImageView) view).setImageDrawable(pressed ? surface.pressedImage : surface.image);
+        if (surface.selectedImage != null && view instanceof ImageView && surface.image != null) {
+            ((ImageView) view).setImageDrawable(pressed ? surface.selectedImage : surface.image);
         }
     }
 }

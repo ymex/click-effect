@@ -6,14 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
-import cn.ymex.effect.view.Deputer;
-
 /**
  * Created by ymexc on 2018/5/26.
  * About: AppCompatButton
  */
 public class EffectButton extends AppCompatButton {
-    Deputer deputer;
+    ViewDepute viewDepute;
 
     public EffectButton(Context context) {
         this(context, null);
@@ -25,28 +23,28 @@ public class EffectButton extends AppCompatButton {
 
     public EffectButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        deputer = Deputer.instance();
-        deputer.dealAttrs(context, attrs);
+        viewDepute = ViewDepute.instance();
+        viewDepute.dealAttrs(context, attrs);
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        deputer.onViewFinishInflate(this);
+        viewDepute.onViewFinishInflate(this);
     }
 
     @Override
     protected void dispatchSetPressed(boolean pressed) {
         super.dispatchSetPressed(pressed);
-        deputer.dispatchSetPressed(this, pressed);
+        viewDepute.dispatchSetPressed(this, pressed);
     }
     @Override
     protected void onFocusChanged(boolean gainFocus, int direction, @Nullable Rect previouslyFocusedRect) {
         super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
-        deputer.onFocusChanged(this, gainFocus, direction, previouslyFocusedRect);
+        viewDepute.onFocusChanged(this, gainFocus, direction, previouslyFocusedRect);
     }
 
-    public Deputer getDeputer() {
-        return deputer;
+    public ViewDepute getViewDepute() {
+        return viewDepute;
     }
 }

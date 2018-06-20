@@ -1,4 +1,4 @@
-package cn.ymex.effect.view;
+package cn.ymex.effect.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,25 +23,28 @@ import cn.ymex.effect.Effect;
 import cn.ymex.effect.SelectorEffect;
 
 /**
- * Created by ymexc on 2018/5/26.
+ *
+ * @author ymexc
+ * @date 2018/5/26
  * About:代理
  */
-public class Deputer {
+public class ViewDepute {
     private Effect effect;
     private ViewSurface surface;
     public static final int EFFECT_MODEL_PRESS = 1;
     public static final int EFFECT_MODEL_FOCUS = 2;
     public static final int EFFECT_MODEL_BOTH = 3;
+    public static final int EFFECT_MODEL_MANUAL = 4;
 
     private int effectModel = EFFECT_MODEL_BOTH;
 
-    private Deputer() {
+    private ViewDepute() {
         super();
         this.surface = new ViewSurface();
     }
 
-    public static Deputer instance() {
-        return new Deputer();
+    public static ViewDepute instance() {
+        return new ViewDepute();
     }
 
     public void dealAttrs(Context context, AttributeSet attrs) {
@@ -56,14 +59,14 @@ public class Deputer {
         surface.bottomLeftRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_bottom_left_radius, 0);
         surface.bottomRightRadius = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_bottom_right_radius, 0);
         surface.pressedBg = typedArray.getDrawable(R.styleable.EffectViewContainer_effect_selected_background);
-        surface.pressedTextColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_selected_text_color, 0);
+        surface.selectedTextColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_selected_text_color, 0);
         surface.strokeColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_stroke_color, 0);
-        surface.pressedStrokeColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_selected_stroke_color, 0);
+        surface.selectedStrokeColor = typedArray.getColor(R.styleable.EffectViewContainer_effect_selected_stroke_color, 0);
         surface.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.EffectViewContainer_effect_stroke_width, 0);
-        surface.pressedImage = typedArray.getDrawable(R.styleable.EffectViewContainer_effect_selected_image);
+        surface.selectedImage = typedArray.getDrawable(R.styleable.EffectViewContainer_effect_selected_image);
         if (surface.strokeWidth > 0) {
             if (surface.strokeColor != 0) {
-                surface.pressedStrokeColor = surface.pressedStrokeColor != 0 ? surface.pressedStrokeColor : surface.strokeColor;
+                surface.selectedStrokeColor = surface.selectedStrokeColor != 0 ? surface.selectedStrokeColor : surface.strokeColor;
             }
         }
         setEffectModel(typedArray.getInt(R.styleable.EffectViewContainer_effect_model, EFFECT_MODEL_BOTH));
@@ -120,7 +123,7 @@ public class Deputer {
 
         if (surface.defSelector) {
             this.effect = new SelectorEffect();
-        } else if (surface.pressedBg != null || surface.pressedTextColor != 0 || surface.pressedImage != null) {
+        } else if (surface.pressedBg != null || surface.selectedTextColor != 0 || surface.selectedImage != null) {
             this.effect = new SelectorEffect();
         } else {
             this.effect = new AlphaEffect();
@@ -142,7 +145,7 @@ public class Deputer {
 
         }
         if (surface.pressedBg != null && surface.pressedBg instanceof ColorDrawable) {
-            surface.pressedBg = createRoundRectDrawable(((ColorDrawable) surface.pressedBg).getColor(), surface.strokeWidth, surface.pressedStrokeColor);
+            surface.pressedBg = createRoundRectDrawable(((ColorDrawable) surface.pressedBg).getColor(), surface.strokeWidth, surface.selectedStrokeColor);
         }
     }
 
@@ -189,12 +192,8 @@ public class Deputer {
     }
 
     public void dispatchSetPressed(View view, boolean pressed) {
-        if (effectModel == EFFECT_MODEL_BOTH) {
+        if (effectModel == EFFECT_MODEL_BOTH || effectModel == EFFECT_MODEL_PRESS) {
             effect(view, pressed, -1, null);
-        } else if (effectModel == EFFECT_MODEL_PRESS) {
-            effect(view, pressed, -1, null);
-        } else {
-            //do nothing
         }
     }
 
@@ -212,17 +211,19 @@ public class Deputer {
 
 
     public void onFocusChanged(View view, boolean gainFocus, int direction, @Nullable Rect previouslyFocusedRect) {
-        if (effectModel == EFFECT_MODEL_BOTH) {
+        if (effectModel == EFFECT_MODEL_BOTH || effectModel == EFFECT_MODEL_FOCUS) {
             effect(view, gainFocus, direction, previouslyFocusedRect);
-        } else if (effectModel == EFFECT_MODEL_FOCUS) {
-            effect(view, gainFocus, direction, previouslyFocusedRect);
-        } else {
-            //do nothing
         }
-        effect(view, gainFocus, direction, previouslyFocusedRect);
+    }
+
+    public void dispatchSetEffect(View view, boolean flag) {
+        if (effectModel == EFFECT_MODEL_MANUAL) {
+            effect(view, flag, -1, null);
+        }
     }
 
     public void setEffectModel(int effectModel) {
         this.effectModel = effectModel;
     }
+
 }

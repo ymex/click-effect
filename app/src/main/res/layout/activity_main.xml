@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <cn.ymex.effect.view.EffectViewContainer
+    <cn.ymex.effect.widget.EffectViewContainer
         android:layout_width="248dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="系统默认select或自定义的xml selector" />
-    </cn.ymex.effect.view.EffectViewContainer>
+    </cn.ymex.effect.widget.EffectViewContainer>
 
-    <cn.ymex.effect.view.EffectViewContainer
+    <cn.ymex.effect.widget.EffectViewContainer
         android:layout_width="248dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
@@ -29,9 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="click effect 默认" />
-    </cn.ymex.effect.view.EffectViewContainer>
+    </cn.ymex.effect.widget.EffectViewContainer>
 
-    <cn.ymex.effect.view.EffectViewContainer
+    <cn.ymex.effect.widget.EffectViewContainer
         android:id="@+id/buttonEffect_lout"
         android:layout_width="248dp"
         android:layout_height="wrap_content"
@@ -50,10 +50,10 @@
             android:background="#bbccee"
             android:text="Round Rect"
             android:textColor="#003300" />
-    </cn.ymex.effect.view.EffectViewContainer>
+    </cn.ymex.effect.widget.EffectViewContainer>
 
 
-    <cn.ymex.effect.view.EffectViewContainer
+    <cn.ymex.effect.widget.EffectViewContainer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp">
@@ -62,9 +62,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher" />
-    </cn.ymex.effect.view.EffectViewContainer>
+    </cn.ymex.effect.widget.EffectViewContainer>
 
-    <cn.ymex.effect.view.EffectViewContainer
+    <cn.ymex.effect.widget.EffectViewContainer
         android:layout_width="248dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -81,9 +81,9 @@
             android:background="@android:color/white"
             android:text="stroke"
             android:textColor="#003300" />
-    </cn.ymex.effect.view.EffectViewContainer>
+    </cn.ymex.effect.widget.EffectViewContainer>
 
-    <cn.ymex.effect.view.EffectViewContainer
+    <cn.ymex.effect.widget.EffectViewContainer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="textview effect" />
-    </cn.ymex.effect.view.EffectViewContainer>
+    </cn.ymex.effect.widget.EffectViewContainer>
 
     <cn.ymex.effect.widget.EffectImageButton
         android:layout_width="wrap_content"

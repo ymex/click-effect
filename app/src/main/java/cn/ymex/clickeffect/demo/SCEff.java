@@ -5,7 +5,7 @@ import android.view.View;
 import cn.ymex.effect.Effect;
 import cn.ymex.effect.ScaleEffect;
 import cn.ymex.effect.SelectorEffect;
-import cn.ymex.effect.view.ViewSurface;
+import cn.ymex.effect.widget.ViewSurface;
 
 /**
  * Created by ymexc on 2018/6/20.

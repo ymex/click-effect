@@ -1,25 +1,28 @@
-package cn.ymex.effect.view;
+package cn.ymex.effect.widget;
 
 import android.graphics.drawable.Drawable;
 
 /**
- * Created by ymexc on 2018/5/26.
+ *
+ * @author ymexc
+ * @date 2018/5/26
  * About:surface
  */
 public class ViewSurface {
     public boolean defSelector;
-    public Drawable bg;//背景
-    public int textColor;//文字颜色
+    /**
+     * 背景
+     */
+    public Drawable bg;
+    public int textColor;
     public Drawable pressedBg;
-    public int pressedTextColor;
+    public int selectedTextColor;
     public int strokeWidth;
     public int strokeColor;
-    public int pressedStrokeColor;
-
+    public int selectedStrokeColor;
     public Drawable image;
-    public Drawable pressedImage;
-
-    public int roundRadius;//圆角半径
+    public Drawable selectedImage;
+    public int roundRadius;
     public int topLeftRadius;
     public int topRightRadius;
     public int bottomLeftRadius;

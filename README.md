@@ -15,20 +15,20 @@ implementation  'cn.ymex:click-effect:1.2.4'
 如button,textview等。不配置任何effect属性的情况下，默认有个半透明的效果。
 
 ```
-<cn.ymex.effect.view.EffectViewContainer
+<cn.ymex.effect.widget.EffectViewContainer
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher" />
-</cn.ymex.effect.view.EffectViewContainer>
+</cn.ymex.effect.widget.EffectViewContainer>
 ```
 
 配置effect属性可实现更多自定义效果。
 
 ```
-<cn.ymex.effect.view.EffectViewContainer
+<cn.ymex.effect.widget.EffectViewContainer
         android:id="@+id/buttonEffect_lout"
         android:layout_width="248dp"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@ implementation  'cn.ymex:click-effect:1.2.4'
             android:background="#bbccee"
             android:text="hi-hi"
             android:textColor="#003300" />
-</cn.ymex.effect.view.EffectViewContainer>
+</cn.ymex.effect.widget.EffectViewContainer>
 ```
 为了减少层级这里重写了四个基础组件（Button,ImageButton,ImageView,TextView）,你可以在布局中直接使用
 不必再包裹一个布局。当然你可以你方便的重写你自己的组件 （参考 EffectButton）。

@@ -1,4 +1,4 @@
-package cn.ymex.effect.view;
+package cn.ymex.effect.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -7,15 +7,17 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 
 /**
- * Created by ymexc on 2018/5/22.
+ * @author ymexc
+ * @date 2018/5/22
  * About:EffectView
  */
-public class EffectViewContainer extends FrameLayout {
+public class EffectViewContainer extends FrameLayout implements EffectView {
 
-    private Deputer deputer;
+    private ViewDepute viewDepute;
 
     public EffectViewContainer(Context context) {
         this(context, null);
@@ -38,8 +40,8 @@ public class EffectViewContainer extends FrameLayout {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        deputer = Deputer.instance();
-        deputer.dealAttrs(context, attrs);
+        viewDepute = ViewDepute.instance();
+        viewDepute.dealAttrs(context, attrs);
     }
 
     @Override
@@ -47,7 +49,7 @@ public class EffectViewContainer extends FrameLayout {
         super.onFinishInflate();
         //getChildAt(0).setEnabled(false);
         this.setFocusable(true);
-        deputer.onViewFinishInflate(this);
+        viewDepute.onViewFinishInflate(this);
     }
 
 
@@ -71,16 +73,23 @@ public class EffectViewContainer extends FrameLayout {
     @Override
     protected void dispatchSetPressed(boolean pressed) {
         super.dispatchSetPressed(pressed);
-        deputer.dispatchSetPressed(this, pressed);
+        viewDepute.dispatchSetPressed(this, pressed);
     }
 
     @Override
     protected void onFocusChanged(boolean gainFocus, int direction, @Nullable Rect previouslyFocusedRect) {
         super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
-        deputer.onFocusChanged(this, gainFocus, direction, previouslyFocusedRect);
+        viewDepute.onFocusChanged(this, gainFocus, direction, previouslyFocusedRect);
     }
 
-    public Deputer getDeputer() {
-        return deputer;
+    @Override
+    public ViewDepute getViewDepute() {
+        return viewDepute;
+    }
+
+
+    @Override
+    public void dispatchSetEffect(View view, boolean flag) {
+        viewDepute.dispatchSetEffect(view, flag);
     }
 }
